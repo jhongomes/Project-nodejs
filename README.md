@@ -99,7 +99,7 @@ Request body example:
  ```json
 {
 		"type_customer": "juridica",
-     "name": "kk",
+     "name": "Jhonatan",
      "lastname": "Gomes souza",
      "cpf": "3333",
      "email": "jhonata@gmail.com",
