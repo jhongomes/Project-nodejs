@@ -26,7 +26,7 @@ class CustomerRepositoryInMemory implements ICustomerRepository{
         store_hours_open,
         day_of_attendance,
         vehicles_used,
-    }: ICreateCustomerDTO): Promise<void> {
+    }: ICreateCustomerDTO): Promise<Customer> {
        const customer = new Customer();
 
        Object.assign(customer, {
@@ -47,6 +47,8 @@ class CustomerRepositoryInMemory implements ICustomerRepository{
            
        })
        this.customers.push(customer);
+
+       return customer;
     }
      
     async list(): Promise<Customer[]> {

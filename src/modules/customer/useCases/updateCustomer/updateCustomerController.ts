@@ -8,6 +8,7 @@ import { UpdateCustomerUseCase } from './updateCustomerUseCase';
 class UpdateCustomerController {
 
     async handle(request:Request, response:Response): Promise<Response>{
+        const { id } = request.params;
         const {type_customer, name, lastname, cpf, email, telephone,
             zip_code, street, number, city, state,  store_hours_open,
             day_of_attendance, vehicles_used } = request.body;

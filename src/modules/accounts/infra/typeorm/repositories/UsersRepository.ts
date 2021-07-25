@@ -37,7 +37,7 @@ class UsersRepository implements IUsersRepository {
     }
 
     async list(): Promise<User[]> {
-        const all = await this.repository.find({ relations: ['customer']});
+        const all = await this.repository.find();
 
         return all;
     }

@@ -63,7 +63,7 @@ class UpdateCustomerUseCase {
      }
 
 
-     if(cpf !== customer.cpf){
+     if(cpf !== customer?.cpf){
 
      const customerAlreadyExistsCPF = await this.customerRepository.findByCPF(cpf)
     
@@ -72,7 +72,7 @@ class UpdateCustomerUseCase {
      }
    }
 
-     if(email !== customer.email){
+     if(email !== customer?.email){
 
      const customerAlreadyExists = await this.customerRepository.findByEmail(email);
 

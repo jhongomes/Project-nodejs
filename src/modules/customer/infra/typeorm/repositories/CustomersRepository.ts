@@ -27,7 +27,7 @@ class CustomerRepository implements ICustomerRepository{
     store_hours_open,
     day_of_attendance,
     vehicles_used
-   }: ICreateCustomerDTO): Promise<void> {
+   }: ICreateCustomerDTO): Promise<Customer> {
 
     const customer = this.repository.create({
      type_customer,
@@ -47,6 +47,8 @@ class CustomerRepository implements ICustomerRepository{
     });
 
     await this.repository.save(customer);
+
+    return customer;
         
     }
     async list(): Promise<Customer[]> {
@@ -55,14 +57,14 @@ class CustomerRepository implements ICustomerRepository{
         return customer;
     }
 
-    async findByEmail(email: string): Promise<Customer> {
+    async findByEmail(email: string): Promise<Customer | undefined> {
         const customer = await this.repository.findOne({ email })
         
         return customer;
 
     }
 
-    async findByCPF(cpf: string): Promise<Customer> {
+    async findByCPF(cpf: string): Promise<Customer | undefined> {
         const customer = await this.repository.findOne({ cpf })
 
         return customer;

@@ -14,7 +14,7 @@ class CreateCustomerController {
 
         const createCustomerUseCase = container.resolve(CreateCustomerUseCase);
 
-        await createCustomerUseCase.execute({
+         await createCustomerUseCase.execute({
             type_customer,
             
              name, 
@@ -32,7 +32,7 @@ class CreateCustomerController {
              vehicles_used,
         })
 
-        return response.status(201).send();
+        return response.status(201).json(createCustomerUseCase)
     }
 
 }

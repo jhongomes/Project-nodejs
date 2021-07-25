@@ -1,5 +1,7 @@
+import { response } from "express";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { Customer } from "../../infra/typeorm/entities/Customer";
 
 
 import { ICustomerRepository} from "../../repositories/ICustomerRepository";
@@ -43,7 +45,7 @@ class CreateCustomerUseCase {
       store_hours_open,
       day_of_attendance,
       vehicles_used, 
-     }: IRequest): Promise<void>{
+     }: IRequest): Promise<Customer>{
 
       if(type_customer == " " || name == " " || lastname == " " || cpf == " " || email == " " || telephone == " " || zip_code == " " ||
       street == " " || number == " " || city == "" || state == " " || vehicles_used == " ") {
@@ -62,7 +64,7 @@ class CreateCustomerUseCase {
         throw new AppError("CPF Already exists!")
      }
 
-     this.customerRepository.create({
+    const customer = await this.customerRepository.create({
       type_customer,
       name,
       lastname,
@@ -78,7 +80,11 @@ class CreateCustomerUseCase {
       day_of_attendance,
       vehicles_used,
      })
+
+
+     return customer
      }
+     
 
 
     }
