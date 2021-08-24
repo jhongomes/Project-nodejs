@@ -58,14 +58,14 @@ class CustomerRepository implements ICustomerRepository{
     }
 
     async findByEmail(email: string): Promise<Customer | undefined> {
-        const customer = await this.repository.findOne({ email })
+        const customer = await this.repository.findOne(email)
         
         return customer;
 
     }
 
     async findByCPF(cpf: string): Promise<Customer | undefined> {
-        const customer = await this.repository.findOne({ cpf })
+        const customer = await this.repository.findOne(cpf)
 
         return customer;
     }

@@ -18,8 +18,9 @@ const deleteCustomerController = new DeleteCustomerController();
 
 
 customersRoutes.post("/", createCustomerController.handle);
-customersRoutes.use(ensureAuthenticate)
+
 customersRoutes.get("/", listCustomerController.handle);
+customersRoutes.use(ensureAuthenticate)
 customersRoutes.get("/:id", listFindByCPFCustomerController.handle);
 customersRoutes.put("/:id", updateCustomerController.handle);
 customersRoutes.delete("/:id", deleteCustomerController.handle);

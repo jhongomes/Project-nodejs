@@ -55,13 +55,13 @@ class CreateCustomerUseCase {
       const customerAlreadyExists = await this.customerRepository.findByEmail(email);
 
       if(customerAlreadyExists){
-        throw new AppError("There is already a registered user with this e-mail!!")
+        throw new AppError("There is already a registered user with this e-mail!!", 400)
      }
 
      const customerExists = await this.customerRepository.findByCPF(cpf)
     
      if(customerExists){
-        throw new AppError("CPF Already exists!")
+        throw new AppError("CPF Already exists!", 400)
      }
 
     const customer = await this.customerRepository.create({

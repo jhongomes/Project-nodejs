@@ -1,5 +1,5 @@
 import { inject, injectable, container } from "tsyringe";
-import { version } from "uuid";
+
 import { AppError } from "../../../../shared/errors/AppError";
 import { Customer } from "../../infra/typeorm/entities/Customer";
 import { ICustomerRepository } from "../../repositories/ICustomerRepository";
